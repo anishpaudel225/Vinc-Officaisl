@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+        .photo-div, .payment-div {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            width: 45%;
+        }
+        .photo-div img {
+            width: 100%;
+            height: auto;
+        }
+        .payment-div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .payment-div input, .payment-div button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .payment-div button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .payment-div button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-div">
+        <img id="productImage" src="" alt="Product Image">
+        <h2 id="productName"></h2>
+        <p id="productPrice"></p>
+    </div>
+    <div class="payment-div">
+        <h2>Payment Information</h2>
+        <label for="text">Enter Your Number:</label>
+        <input type="text" id="Number" placeholder="Enter your number">
+        <label for="password">Password</label>
+        <input type="Password" id="password" placeholder="Enter password">
+        
+        <button>Pay Now</button>
+    </div>
+
+    <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const image = urlParams.get('image');
+        const name = urlParams.get('name');
+        const price = urlParams.get('price');
+
+        document.getElementById('productImage').src = image;
+        document.getElementById('productName').textContent = name;
+        document.getElementById('productPrice').textContent = price;
+    </script>
+</body>
+</html>
