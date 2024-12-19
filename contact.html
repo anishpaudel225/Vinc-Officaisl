@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <style>
     header{
         justify-content: center;
@@ -60,7 +61,7 @@
 .rightsection {
     flex: 1;
     padding: 10px;
-    background: linear-gradient(135deg, #d2ddee, #c2e9fb);
+    background: linear-gradient(135deg, #ffffff, #ffffff);
     color: #000000;
     box-sizing: border-box;
     border-right: 2px solid #e0e0e0;
@@ -76,9 +77,12 @@
 }
 
 form {
+   
+
     font-size: 14px;
     transform:scale(0.9);
     width:100%
+    
 }
 
 form label {
@@ -101,6 +105,8 @@ form input[type="email"] {
 
 form button {
     display:flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 9px;
     background-color: #007bff;
@@ -109,6 +115,7 @@ form button {
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    text-align: center;
 }
 
 form button:hover {
@@ -123,7 +130,7 @@ form button:hover {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
+   
 }
 
 .leftsection iframe {
@@ -132,22 +139,39 @@ form button:hover {
     border-radius: 10px;
     border: none;
 }
-
-   
+.copyright {
+    text-align: center;
+    padding: 10px;
+}
+footer a {
+    text-decoration: none;
+    color:black;
+}
+select {
+    width: 93.5%;
+    padding:8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+  }
     
 </style>
 <body>
     <header>
         <nav>
             <div class="left" >
-                <i>VIN.C Official</i> </div>
+                <img src="images/logo.png">
+             </div>
             <div class="right">
                 <ul>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/vinc.html">Home</a></li>
                     <li><a href="file:///C:/Users/anish/Documnts/BCA/5th%20sem/project/aboutus.html">About</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/shop.html">Shop</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/contact.html">Contact Us</a></li>
-                    <li> <a href="/">🛒 Cart </a></li> 
+                    
                 </ul>
             </div>
         </nav>
@@ -169,13 +193,29 @@ form button:hover {
         </div>
 
         <div class="rightsection">
-            <h2>Contact Form</h2>
+            <h2>Contact Us</h2>
             <form>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="e.g., Kushal Bhurtel"><br>
-
-                <label for="address">Address:</label>
-                <input type="text" name="address" placeholder="e.g., Pokhara"><br>
+                
+                   
+            <label for="Name">Address</label>
+            <select id="Address" name="Address">
+                <option value="">Select City</option>
+                <option value="Kathmandu">Kathmandu</option>
+                <option value="Pokhara">Pokhara</option>
+                <option value="Lalitpur">Lalitpur</option>
+                <option value="Biratnagar">Biratnagar</option>
+                <option value="Birgunj">Birgunj</option>
+                <option value="Bharatpur">Bharatpur</option>
+                <option value="Nepalgunj">Nepalgunj</option>
+                <option value="Dharan">Dharan</option>
+                <option value="Butwal">Butwal</option>
+                <option value="Hetauda">Hetauda</option>
+              </select>
+              <br>
+            
+                  
 
                 <label for="number">Contact Number:</label>
                 <input type="text" name="number" placeholder="e.g., 9800000000"><br>
@@ -191,6 +231,17 @@ form button:hover {
         </div>
        
     </div>
+    
+    <footer>
+        <div class="copyright"> 
+            <div>
+                &copy; Copyright 2024 <a href=" https://www.instagram.com/vin.c_official" target="_blank" > Vin.c Official</a> | Site design By: 
+                <a href="https://www.instagram.com/anee_shh.25" target="_blank" > Anish Poudel</a>
+                
+            </div>
+        </div>
+    </footer>
+   
 </body>
 </html>
 

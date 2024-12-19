@@ -61,12 +61,18 @@
     .content-section .rightSection {
         flex: 1;
         padding: 0 20px;
+       
     }
-    #shop .products {
-        display: flex; 
-        justify-content: space-between; 
+    #shop {
+        text-align: center;
+        margin:10px auto;
+
+    }.products {
+        display: flex;
+        flex-wrap:wrap; 
+        justify-content: center; 
         gap: 20px; 
-        flex-wrap: wrap;
+        margin: 10px 0;
     }
     .product-card {
         flex: 1; 
@@ -82,11 +88,12 @@
         object-fit: cover; 
     }
     .product-card img:hover{
-        transform: scale(1.1);
-        cursor: pointer;
+       transform: scale(1.1);
+       cursor: pointer; 
+        
     }
     .zoom {
-        transition: transform 0.3s ease;
+        transition: transform 0.1s ease;
         cursor: pointer;
     }
     .zoom:hover {
@@ -124,20 +131,21 @@
     height:390px;
     background: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 7px;
     overflow: hidden;
 }
 
 
 .rightsection {
     flex: 1;
-    padding: 18px;
-    background: linear-gradient(135deg, #d2ddee, #c2e9fb);
+    padding: 2px;
+    background: linear-gradient(135deg,  #ffffff);
     color: #000000;
     box-sizing: border-box;
     border-right: 2px solid #e0e0e0;
     overflow: hidden;
     height: 100%;
+    
     
 }
 
@@ -145,6 +153,7 @@
     text-align: center;
     margin-bottom: 20px;
     color: #333;
+   
 }
 
 form {
@@ -169,10 +178,10 @@ form input[type="email"] {
     border-radius: 7px;
 }
 
-
-
 form button {
     display:flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding: 9px;
     background-color: #007bff;
@@ -181,6 +190,7 @@ form button {
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    text-align: center;
 }
 
 form button:hover {
@@ -204,15 +214,90 @@ form button:hover {
     border-radius: 10px;
     border: none;
 }
-a{
+footer a {
     text-decoration: none;
+    color: inherit;
 }
+select {
+    width: 93.5%;
+    padding:8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+  }
+    
 </style>
+ <script>
+        function redirectToCart(image, name, price) {
+            const productDetails = `
+                <html>
+                <head>
+                    <title>${name} - Details</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100vh;
+                        }
+                        .left-section {
+                            flex: 1;
+                            text-align: center;
+                            padding: 20px;
+                        }
+                        .right-section {
+                            flex: 1;
+                            padding: 20px;
+                        }
+                        img {
+                            max-width: 95%;
+                            height: 80%;
+                            border-radius: 10px;
+                        }
+                        .btn {
+                            padding: 10px 15px;
+                            background-color: #007BFF;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                        .btn:hover {
+                            background-color: #005 6b3;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="left-section">
+                        <img src="${image}" alt="${name}">
+                    </div>
+                    <div class="right-section">
+                        <h1>${name}</h1>
+                        <p><strong>Price:</strong> ${price}</p>
+                        <p><strong>Available Sizes:</strong> S, M, L, XL, XXL</p>
+                        <p><strong>Description:</strong> This is a premium quality product designed for both style and comfort.</p>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(productDetails);
+            newWindow.document.close();
+        }
+    </script>
 <body>
     <header>
         <nav>
             <div class="left">
-                <i>VIN.C Official</i>
+                <img src="images/logo.png">
             </div>
             <div class="right">
                 <ul>
@@ -220,7 +305,7 @@ a{
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/aboutus.html">About</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/shop.html">Shop</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/contact.html">Contact Us</a></li>
-                    <li><a href="/">🛒 Cart</a></li> 
+                    
                 </ul>
             </div>
         </nav>
@@ -254,44 +339,41 @@ a{
                 <img src="images/bottoms.png" alt="Product 2">
                 <h3>Regal Chinos</h3>
                 <p>$29.99</p>
-                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$29.99')">Add to Cart</button>
+                <button class="btn" onclick="redirectToCart('images/bottoms.png', 'Regal Chinos', '$29.99')">Add to Cart</button>
             </div>
             <div class="product-card">
                 <img src="images/image.png" alt="Product 3">
                 <h3>Semi-formal Fusion</h3>
                 <p>$20.99</p>
-                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$20.99')">Add to Cart</button>
+                <button class="btn" onclick="redirectToCart('images/image.png', 'Semi-formal Fusion', '$20.99')">Add to Cart</button>
             </div>
         </div>
-
+    
         <div class="products">
             <div class="product-card">
-                <img src="images/ramon.png" alt="Product 1">
+                <img src="images/ramon.png" alt="Product 4">
                 <h3>Obsidian Edge Shirt</h3>
                 <p>$19.99</p>
-                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$19.99')">Add to Cart</button>
+                <button class="btn" onclick="redirectToCart('images/ramon.png', 'Obsidian Edge Shirt', '$19.99')">Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="images/cargo.png" alt="Product 2">
+                <img src="images/cargo.png" alt="Product 5">
                 <h3>City Cargo</h3>
                 <p>$29.99</p>
-                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$29.99')">Add to Cart</button>
+                <button class="btn" onclick="redirectToCart('images/cargo.png', 'City Cargo', '$29.99')">Add to Cart</button>
             </div>
             <div class="product-card">
-                <img src="images/jacket.png" alt="Product 3">
+                <img src="images/jacket.png" alt="Product 6">
                 <h3>Jacket</h3>
                 <p>$20.99</p>
-                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$20.99')">Add to Cart</button>
+                <button class="btn" onclick="redirectToCart('images/jacket.png', 'Jacket', '$20.99')">Add to Cart</button>
             </div>
         </div>
-    </section> <br>
+    </section>
 
-    <script>
-        function redirectToCart(imageUrl, productName, productPrice) {
-            const url = `cart.html?image=${encodeURIComponent(imageUrl)}&name=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}`;
-            window.location.href = url;
-        }
-    </script>
+
+    
+
 
     
 
@@ -307,13 +389,25 @@ a{
         </div>
 
         <div class="rightsection">
-            <h2>Contact Form</h2>
+            <h2>Contact Us</h2>
             <form>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="e.g., Kushal Bhurtel"><br>
-
-                <label for="address">Address:</label>
-                <input type="text" name="address" placeholder="e.g., Pokhara"><br>
+                <label for="Name">Address</label>
+                <select id="Address" name="Address">
+                    <option value="">Select City</option>
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Pokhara">Pokhara</option>
+                    <option value="Lalitpur">Lalitpur</option>
+                    <option value="Biratnagar">Biratnagar</option>
+                    <option value="Birgunj">Birgunj</option>
+                    <option value="Bharatpur">Bharatpur</option>
+                    <option value="Nepalgunj">Nepalgunj</option>
+                    <option value="Dharan">Dharan</option>
+                    <option value="Butwal">Butwal</option>
+                    <option value="Hetauda">Hetauda</option>
+                  </select>
+                  <br>
 
                 <label for="number">Contact Number:</label>
                 <input type="text" name="number" placeholder="e.g., 9800000000"><br>
@@ -333,8 +427,9 @@ a{
     <footer>
         <div class="copyright"> 
             <div>
-                &copy; Copyright 2024 Vin.c | Site design By: 
+                &copy; Copyright 2024  <a href=" https://www.instagram.com/vin.c_official" target="_blank" > Vin.c Official</a>  | Site design By: 
                 <a href="https://www.instagram.com/anee_shh.25" target="_blank" > Anish Poudel</a>
+                
             </div>
         </div>
     </footer>

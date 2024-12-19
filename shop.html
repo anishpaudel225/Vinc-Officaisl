@@ -3,131 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    header{
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        height:70px;
-        text-align: center;
+    <title>Shop</title>
+    <style>
+        header {
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            height: 70px;
+            text-align: center;
+        }
+        body {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-family: Segoe UI Semibold, Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
+            background-color: rgb(255, 255, 255);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            list-style: none;
+            margin: 0 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        #shop .products {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .zoom {
+            transition: transform 0.1s ease;
+            cursor: pointer;
+        }
+        .zoom:hover {
+            transform: scale(1.2); 
+        }
+        .product-card {
+            flex: 1;
+            max-width: 33%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%; 
+            height: auto;
+            transition: transform 0.5s ease-in-out; 
+            border-radius: 7px; 
+            object-fit: cover; 
+        }
+        .product-card img:hover{
+           transform: scale(1.1);
+           cursor: pointer; 
+            
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .copyright {
+            text-align: center;
+            padding: 10px;
+        }
+        footer a {
+            text-decoration: none;
+            color:black;
+        }
+    </style>
+    <script>
+        function redirectToCart(image, name, price) {
+            const productDetails = `
+                <html>
+                <head>
+                    <title>${name} - Details</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100vh;
+                        }
+                        .left-section {
+                            flex: 1;
+                            text-align: center;
+                            padding: 20px;
+                        }
+                        .right-section {
+                            flex: 1;
+                            padding: 20px;
+                        }
+                        img {
+                            max-width: 100%;
+                            height: 80%;
+                            border-radius: 10px;
+                        }
+                        .btn {
+                            padding: 10px 15px;
+                            background-color: #007BFF;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                        .btn:hover {
+                            background-color: #0056b3;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="left-section">
+                        <img src="${image}" alt="${name}">
+                    </div>
+                    <div class="right-section">
+                        <h1>${name}</h1>
+                        <p><strong>Price:</strong> ${price}</p>
+                        <p><strong>Available Sizes:</strong> S, M, L, XL, XXL</p>
+                        <p><strong>Description:</strong> This is a premium quality product designed for both style and comfort.</p>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(productDetails);
+            newWindow.document.close();
+        }
         
-    }
-    body {
-        background-color: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-        font-family: Segoe UI Semibold ,Arial , sans-serif;
-    }
-    nav {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 50px;
-        background-color: rgb(255, 255, 255);
-    }
-    nav ul {
-        display:flex;
-        justify-content: center;
-    }
-    
-    nav ul li {
-        list-style: none;
-        margin:0 25px;
-    }
+    </script>
 
-    nav ul li a {
-        text-decoration: none;
-        color: black
-    }
-    .rightSection img {
-        max-width: 100%; 
-        height: auto;    
-        display: block;  
-        object-fit:contain; 
-    }
-    #shop .products {
-        display: flex; 
-        justify-content: space-between; 
-        gap: 20px; 
-        flex-wrap: wrap;
-    }
+
     
-    .product-card {
-        flex: 1; 
-        max-width: 33%;
-        box-sizing: border-box; 
-        text-align: center; 
-    }
-    
-    .product-card img {
-        width: 100%; 
-        height: auto; 
-        border-radius: 7px; 
-        object-fit: cover; 
-    }
-</style>
+</head>
 <body>
     <header>
         <nav>
-            <div class="left" >
-                <i>VIN.C Official</i> </div>
+            <div class="left">
+                <img src="images/logo.png">
+                
+            </div>
             <div class="right">
                 <ul>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/vinc.html">Home</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/aboutus.html">About</a></li>
-                    <li> <a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/shop.html">Shop</a></li>
+                    <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/shop.html">Shop</a></li>
                     <li><a href="file:///C:/Users/anish/Documents/BCA/5th%20sem/project/contact.html">Contact Us</a></li>
-                    <li> <a href="/">🛒 Cart </a></li> 
+                    
                 </ul>
             </div>
         </nav>
-      
-   
-<section id="shop">
-    <h1>Featured Products</h1>
-    <div class="products">
-        <div class="product-card">
-            <img src="images/Top.png" alt="Product 1">
-            <h3>WebTees</h3>
-            <p>$19.99</p>
-            <button class="btn">Add to Cart</button><br><br>
+    </header>
+    <section id="shop">
+        <h1>Featured Products</h1>
+        <div class="products">
+            <div class="product-card">
+                <img src="images/Top.png" alt="WebTees">
+                <h3>WebTees</h3>
+                <p>$19.99</p>
+                <button class="btn" onclick="redirectToCart('images/Top.png', 'WebTees', '$19.99')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="images/bottoms.png" alt="Regal Chinos">
+                <h3>Regal Chinos</h3>
+                <p>$29.99</p>
+                <button class="btn" onclick="redirectToCart('images/bottoms.png', 'Regal Chinos', '$29.99')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="images/image.png" alt="Semi-formal Fusion">
+                <h3>Semi-formal Fusion</h3>
+                <p>$20.99</p>
+                <button class="btn" onclick="redirectToCart('images/image.png', 'Semi-formal Fusion', '$20.99')">Add to Cart</button>
+            </div>
+            <div class="products">
+                <div class="product-card">
+                    <img src="images/ramon.png" alt="Product 1">
+                    <h3>Obsidian Edge Shirt</h3>
+                    <p>$19.99</p>
+                    <button class="btn" onclick="redirectToCart('images/Top.png', 'Obsidian Edge Shirt', '$19.99')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/cargo.png" alt="Product 2">
+                    <h3>City Cargo</h3>
+                    <p>$29.99</p>
+                    <button class="btn" onclick="redirectToCart('images/Top.png', 'City Cargo', '$29.99')">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/jacket.png" alt="Product 3">
+                    <h3>Jacket</h3>
+                    <p>$20.99</p>
+                    <button class="btn" onclick="redirectToCart('images/Top.png', 'Jacket', '$20.99')">Add to Cart</button>
+                </div>
         </div>
-        <div class="product-card">
-            <img src="images/bottoms.png" alt="Product 2">
-            <h3>Regal Chinos</h3>
-            <p>$29.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/image.png" alt="Product 3">
-            <h3>Semi-formal Fusion</h3>
-            <p>$20.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-    </div>
+    </section>
 
-    <div class="products">
-        <div class="product-card">
-            <img src="images/ramon.png" alt="Product 1">
-            <h3>Obsidian Edge Shirt</h3>
-            <p>$19.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/cargo.png" alt="Product 2">
-            <h3>City cargo</h3>
-            <p>$29.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/jacket.png" alt="Product 3">
-            <h3></h3>
-            <p>$20.99</p>
-            <button class="btn">Add to Cart</button>
-        </div>
-    </div>
-</section>
    
 </body>
+<footer>
+    <div class="copyright"> 
+        <div>
+            &copy; Copyright 2024 <a href=" https://www.instagram.com/vin.c_official" target="_blank" > Vin.c Official</a>| Site design By: 
+            <a href="https://www.instagram.com/anee_shh.25" target="_blank" > Anish Poudel</a>
+            
+        </div>
+    </div>
+</footer>
 </html>
